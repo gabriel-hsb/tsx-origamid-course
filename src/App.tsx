@@ -3,10 +3,11 @@ import { useRef, useState } from "react";
 import videoSrc from "./assets/video.mp4";
 
 function App() {
+  const video = useRef<HTMLVideoElement>(null);
+
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isPictureInPicture, setIsPictureInPicture] = useState(false);
-
-  const video = useRef<HTMLVideoElement>(null);
+  const [isVideoMuted, setIsVideoMuted] = useState(false);
 
   const toggleVideoPlaying = () => {
     setIsVideoPlaying(!isVideoPlaying);
@@ -32,6 +33,18 @@ function App() {
     }
   };
 
+  const toggleVideoMuted = () => {
+    setIsVideoMuted(!isVideoMuted);
+
+    if (video.current) {
+      if (isVideoMuted) {
+        video.current.volume = 1;
+      } else {
+        video.current.volume = 0;
+      }
+    }
+  };
+
   return (
     <main>
       <h1>Hello tsx</h1>
@@ -41,9 +54,10 @@ function App() {
             {isVideoPlaying ? "Pause" : "Play"}
           </button>
           <button onClick={togglePictureInPicture}>
-            {isPictureInPicture
-              ? "Return to normal screen"
-              : "Turn on Picture in Picture"}
+            {isPictureInPicture ? "Turn off PiP" : "Turn on PiP"}
+          </button>
+          <button onClick={toggleVideoMuted}>
+            {isVideoMuted ? "Unmute Video" : "Mute Video"}
           </button>
         </div>
 
