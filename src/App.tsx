@@ -8,6 +8,7 @@ function App() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isPictureInPicture, setIsPictureInPicture] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(false);
+  const [videoPlaybackRate, setVideoPlaybackRate] = useState(1);
 
   const toggleVideoPlaying = () => {
     setIsVideoPlaying(!isVideoPlaying);
@@ -45,9 +46,32 @@ function App() {
     }
   };
 
+  const toggleVideoFaster = () => {
+    const videoRate = video.current;
+
+    switch (videoRate?.playbackRate) {
+      case 1: {
+        videoRate.playbackRate = 2;
+        setVideoPlaybackRate(2);
+        break;
+      }
+      case 2: {
+        videoRate.playbackRate = 3;
+        setVideoPlaybackRate(3);
+        break;
+      }
+      case 3: {
+        videoRate.playbackRate = 1;
+        setVideoPlaybackRate(1);
+        break;
+      }
+    }
+  };
+
   return (
     <main>
       <h1>Hello tsx</h1>
+      <p>{videoPlaybackRate}</p>
       <div>
         <div className="flex">
           <button onClick={toggleVideoPlaying}>
@@ -59,6 +83,7 @@ function App() {
           <button onClick={toggleVideoMuted}>
             {isVideoMuted ? "Unmute Video" : "Mute Video"}
           </button>
+          <button onClick={toggleVideoFaster}>Alternate Speed</button>
         </div>
 
         <video controls src={videoSrc} ref={video} />
