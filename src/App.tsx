@@ -37,14 +37,9 @@ function App() {
     setIsVideoMuted(!isVideoMuted);
 
     if (video.current) {
-      if (isVideoMuted) {
-        video.current.volume = 1;
-      } else {
-        video.current.volume = 0;
-      }
+      video.current.muted = !video.current?.muted;
     }
   };
-
   const toggleVideoFaster = () => {
     const videoRate = video.current;
 
