@@ -68,6 +68,12 @@ function App() {
     }
   };
 
+  const jumpAhead = () => {
+    if (video.current) {
+      video.current.currentTime += 2;
+    }
+  };
+
   return (
     <main>
       <h1>Hello tsx</h1>
@@ -84,6 +90,7 @@ function App() {
             {isVideoMuted ? "Unmute Video" : "Mute Video"}
           </button>
           <button onClick={toggleVideoFaster}>Alternate Speed</button>
+          <button onClick={jumpAhead}>+2s</button>
         </div>
 
         <video controls src={videoSrc} ref={video} />
