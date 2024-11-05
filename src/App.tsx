@@ -8,7 +8,6 @@ function App() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isPictureInPicture, setIsPictureInPicture] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(false);
-  const [videoPlaybackRate, setVideoPlaybackRate] = useState(1);
 
   const toggleVideoPlaying = () => {
     setIsVideoPlaying(!isVideoPlaying);
@@ -52,17 +51,14 @@ function App() {
     switch (videoRate?.playbackRate) {
       case 1: {
         videoRate.playbackRate = 2;
-        setVideoPlaybackRate(2);
         break;
       }
       case 2: {
         videoRate.playbackRate = 3;
-        setVideoPlaybackRate(3);
         break;
       }
       case 3: {
         videoRate.playbackRate = 1;
-        setVideoPlaybackRate(1);
         break;
       }
     }
@@ -77,7 +73,6 @@ function App() {
   return (
     <main>
       <h1>Hello tsx</h1>
-      <p>{videoPlaybackRate}</p>
       <div>
         <div className="flex">
           <button onClick={toggleVideoPlaying}>
