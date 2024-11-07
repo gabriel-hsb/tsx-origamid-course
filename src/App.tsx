@@ -1,30 +1,36 @@
 import useFetch from "./hooks/useFetch";
 
-type ProductsApi = {};
+type ApiProduct = {
+  id: string;
+  nome: string;
+  preco: number;
+  quantidade: number;
+  descricao: string;
+  internacional: boolean;
+};
 
 const BASE_URL = "https://data.origamid.dev/produtos";
 
 function App() {
-  const { error, fetchedData, isLoading } = useFetch({
+  const { error, fetchedData, isLoading } = useFetch<ApiProduct>({
     URL: BASE_URL,
-    options: {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    },
   });
 
-  if (error) return <p>Erro: {error}</p>;
+  if (error) return <p>Erro</p>;
 
-  return (
-    <>
-      <h1>Hello tsx</h1>
-      <button disabled={isLoading}>
-        {isLoading ? "Carregando..." : "Buscar Dados"}
-      </button>
-    </>
-  );
+  if (isLoading) return <p>Carregando...</p>;
+
+  if (fetchedData)
+    return (
+      <>
+        <h1>Hello tsx</h1>
+        <ul>
+          {fetchedData.map(({ descricao, id }) => (
+            <li key={id}>{descricao}</li>
+          ))}
+        </ul>
+      </>
+    );
 }
 
 export default App;

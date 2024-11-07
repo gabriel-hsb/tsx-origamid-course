@@ -1,6 +1,6 @@
 # Crie um custom hook chamado useFetch.
 
-- [ ] 1.  Este hook deve retornar a interface:
+- [x] 1.  Este hook deve retornar a interface:
     <pre>interface FetchState<T> {
             data: T | null;
             loading: boolean;
@@ -10,12 +10,12 @@
 
   - Onde T é um valor genérico que deverá ser passado quando o Hook for utilizado.
 
-- [ ] 2. `data`, `loading` e `error` são estados reativos (`useState`).
+- [x] 2. `data`, `loading` e `error` são estados reativos (`useState`).
 
-- [ ] 3. O hook deve receber a URL e OPTIONS como argumentos (interfaces de fetch).
+- [x] 3. O hook deve receber a URL e OPTIONS como argumentos (interfaces de fetch).
 
-- [ ] 4. O fetch deve ocorrer em um `useEffect`, com dependência apenas da URL.
+- [x] 4. O fetch deve ocorrer em um `useEffect`, com dependência apenas da URL.
 
-- [ ] 5. Use `AbortController` para abortar o fetch caso o componente desmonte, antes do fetch ser concluído.
+- [x] 5. Use `AbortController` para abortar o fetch caso o componente desmonte, antes do fetch ser concluído.
 
-- [ ] 6. Teste o Hook com a api: https://data.origamid.dev/produtos
+- [x] 6. Teste o Hook com a api: https://data.origamid.dev/produtos
