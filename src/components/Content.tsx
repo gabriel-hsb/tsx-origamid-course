@@ -6,22 +6,15 @@ const Content = () => {
 
   if (!context) return;
 
-  const handleIncrement = () => {
-    context.setCount((prev) => prev + 1);
-  };
-
-  const handleReset = () => {
-    context.setCount(0);
-  };
-
-  if (context)
+  if (context.fetchedData)
     return (
       <div>
-        <h1>{context.count}</h1>
-        <div className="flex">
-          <button onClick={handleIncrement}>+1</button>
-          <button onClick={handleReset}>reset</button>
-        </div>
+        <h2>Abaixo estão suas preferências:</h2>
+        <ul>
+          <li>Playback: {context.fetchedData.preferencias.playback}</li>
+          <li>Qualidade: {context.fetchedData.preferencias.qualidade}</li>
+          <li>Volume: {context.fetchedData.preferencias.volume}</li>
+        </ul>
       </div>
     );
 };

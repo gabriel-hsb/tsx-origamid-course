@@ -6,7 +6,7 @@ type useFetchProps = {
 };
 
 const useFetch = <T,>({ URL, OPTIONS }: useFetchProps) => {
-  const [fetchedData, setFetchedData] = useState<T[] | null>(null);
+  const [fetchedData, setFetchedData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<null | string>(null);
 
