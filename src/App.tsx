@@ -1,10 +1,15 @@
-function App() {
+import { GlobalProvider } from "./contexts/GlobalContext";
 
+import Content from "./components/Content";
+import Header from "./components/Header";
+
+function App() {
   return (
-    <>
-      <h1>Hello tsx</h1>
-    </>
-  )
+    <GlobalProvider>
+      <Header />
+      <Content />
+    </GlobalProvider>
+  );
 }
 
-export default App
+export default App;
