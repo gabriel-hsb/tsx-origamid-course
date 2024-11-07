@@ -10,10 +10,10 @@ const Header = () => {
 
   if (context.fetchedData)
     return (
-      <>
+      <header>
         <h1>Olá, {context.fetchedData.nome}!</h1>
         <p>Você possui {context.fetchedData.cursos} cursos</p>
-      </>
+      </header>
     );
 };
 
